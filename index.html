@@ -13,6 +13,7 @@
   a{ text-decoration:none; }
   .wrap{max-width:980px; margin:0 auto;}
   .container{padding:24px;}
+  /* .jpg -> .png 로 변경 */
   .hero{background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.55)), url('./assets/agenda-hero.png') center/cover no-repeat; color:var(--white);}
   .hero .grid{display:grid; grid-template-columns:1fr; gap:24px; align-items:center; padding:38px 24px 30px;}
   .badge{display:inline-block; font-size:12px; letter-spacing:.12em; border:1px solid #6b7280; padding:6px 10px; border-radius:999px; color:#e5e7eb; text-transform:uppercase;}
@@ -162,37 +163,82 @@
   </div>
 </footer>
 
-<!-- YT PLAYER -->
+<!-- YouTube IFrame API & Fallback (오류 폴백 포함) -->
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
-  var player; var qualityTries = 0;
-  function setAllowAttr(){
-    var i = document.getElementById('yt-player');
-    if(i && i.tagName==='IFRAME') i.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');
+  // 재생목록 ID
+  const YT_PLAYLIST_ID = 'PLTI2oXa5igeqRYXxBWLwWeg9BSbTEf9J7';
+
+  // API 실패/차단 시 사용할 폴백 iframe 삽입 + 메시지
+  function mountFallback(reasonText) {
+    const host = document.getElementById('yt-player');
+    if (!host) return;
+    host.innerHTML =
+      '<iframe title="VTK YouTube Playlist" ' +
+      'src="https://www.youtube.com/embed/videoseries?list=' + encodeURIComponent(YT_PLAYLIST_ID) +
+      '&autoplay=1&mute=1&rel=0&modestbranding=1&loop=1&playsinline=1" ' +
+      'allow="autoplay; encrypted-media; picture-in-picture" ' +
+      'style="width:100%;height:100%;border:0;"></iframe>' +
+      (reasonText ? '<div style="position:absolute;bottom:6px;left:6px;font-size:12px;color:#bbb;background:rgba(0,0,0,.45);padding:4px 6px;border-radius:6px;">' +
+      reasonText + '</div>' : '');
   }
-  function onYouTubeIframeAPIReady(){
-    player = new YT.Player('yt-player', {
-      playerVars: {
-        listType:'playlist',
-        list:'PLTI2oXa5igeqRYXxBWLwWeg9BSbTEf9J7',
-        autoplay:1, mute:1, controls:1, rel:0, modestbranding:1, playsinline:1, loop:1, origin:window.location.origin
-      },
-      events: { onReady:onPlayerReady, onStateChange:onPlayerStateChange }
-    });
+
+  // 플레이어 참조
+  var player = null;
+
+  // API 준비 콜백
+  function onYouTubeIframeAPIReady() {
+    try {
+      player = new YT.Player('yt-player', {
+        playerVars: {
+          listType: 'playlist',
+          list: YT_PLAYLIST_ID,
+          autoplay: 1,
+          mute: 1,
+          controls: 1,
+          rel: 0,
+          modestbranding: 1,
+          playsinline: 1,
+          loop: 1
+          // GitHub Pages 배포 시엔 origin 지정 가능. 로컬 file:// 테스트 시 문제되면 주석 유지.
+          // ,origin: window.location.origin
+        },
+        events: {
+          onReady: function (e) {
+            try {
+              var lv = e.target.getAvailableQualityLevels();
+              if (lv && lv.length) e.target.setPlaybackQuality(lv[0]); // 최고 화질 시도
+            } catch (_) {}
+            e.target.playVideo();
+          },
+          onError: function (e) {
+            var code = e && e.data, msg = '';
+            if (code === 101 || code === 150) {
+              msg = '임베드가 허용되지 않은 영상/재생목록입니다(101/150). 공개/임베드 허용을 확인하세요.';
+            } else if (code === 5) {
+              msg = '브라우저/네트워크 환경에서 HTML5 재생이 차단되었습니다(5).';
+            } else if (code === 2) {
+              msg = '잘못된 요청이 감지되었습니다(2). 재생목록 ID를 확인하세요.';
+            } else {
+              msg = '재생 오류가 발생하여 기본 임베드로 전환했습니다.';
+            }
+            console.warn('YouTube onError:', code);
+            mountFallback(msg);
+          }
+        }
+      });
+    } catch (err) {
+      console.error('YT Player init failed:', err);
+      mountFallback('API 초기화 실패 – 기본 임베드로 전환했습니다.');
+    }
   }
-  function setMaxQuality(){
-    try{
-      var lv=player.getAvailableQualityLevels();
-      if(lv && lv.length){ player.setPlaybackQuality(lv[0]); }
-      else { player.setPlaybackQuality('highres'); }
-    }catch(e){}
-  }
-  function onPlayerReady(e){
-    setAllowAttr(); setMaxQuality(); e.target.playVideo();
-    var t=setInterval(function(){ if(qualityTries++>6) return clearInterval(t); setMaxQuality(); setAllowAttr(); },1200);
-  }
-  function onPlayerStateChange(e){ if(e.data===YT.PlayerState.PLAYING){ setMaxQuality(); setAllowAttr(); } }
+
+  // 일정 시간 내 API 콜백이 오지 않으면 폴백
+  setTimeout(function(){
+    if (!player && typeof YT === 'undefined') {
+      mountFallback('네트워크/차단으로 API 연결 실패 – 기본 임베드로 전환했습니다.');
+    }
+  }, 4000);
 </script>
 </body>
 </html>
-
