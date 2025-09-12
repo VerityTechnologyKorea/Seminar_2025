@@ -13,14 +13,19 @@
   a{ text-decoration:none; }
   .wrap{max-width:980px; margin:0 auto;}
   .container{padding:24px;}
-  /* .jpg -> .png 로 변경 */
+  /* hero 배경: PNG */
   .hero{background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.55)), url('./assets/agenda-hero.png') center/cover no-repeat; color:var(--white);}
   .hero .grid{display:grid; grid-template-columns:1fr; gap:24px; align-items:center; padding:38px 24px 30px;}
   .badge{display:inline-block; font-size:12px; letter-spacing:.12em; border:1px solid #6b7280; padding:6px 10px; border-radius:999px; color:#e5e7eb; text-transform:uppercase;}
+  /* 흰 배경에서 눈에 띄는 NEW 배지 */
+  .badge-new{display:inline-block; font-size:12px; letter-spacing:.08em; background:#fbbf24; color:#1f2937; padding:6px 10px; border-radius:999px; font-weight:700;}
   h1{margin:6px 0 10px; font-size:40px; line-height:1.15;}
   .lead{font-size:16px; color:#e5e7eb; margin:0 0 16px;}
   .cta{display:inline-block; background:var(--brand-2); color:#fff; font-weight:800; padding:14px 20px; border-radius:10px;}
-  .cta-outline{display:inline-block; border:1px solid #90caf9; color:#e5e7eb; font-weight:700; padding:12px 16px; border-radius:10px; margin-left:10px;}
+  /* 일정 추가하기(채움형, 더 선명) */
+  .cta-alt{display:inline-block; background:#0ea5e9; color:#fff; font-weight:800; padding:12px 16px; border-radius:10px; margin-left:10px;}
+  /* 유튜브 구독(채움형 레드) */
+  .cta-danger{display:inline-block; background:#ef4444; color:#fff; font-weight:800; padding:12px 16px; border-radius:10px; margin-left:10px;}
   .section{background:#fff;}
   .card{background:#fff; border:1px solid #edf1f7; border-radius:14px; padding:18px;}
   .muted{color:#6b7280;}
@@ -48,7 +53,7 @@
         <p class="lead">2025년 10월 17일 (금) · 서울 서초구 엘타워 5F 오르체홀</p>
         <div>
           <a class="cta" href="https://forms.gle/HXNHUmimfYRd6z8f6" target="_blank" rel="noopener">사전 등록하기</a>
-          <a class="cta-outline" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=VTK%20Seminar%202025%20%7C%20Cadence/OrCAD%20Seminar&dates=20251017T003000Z/20251017T082000Z&details=%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%A7%81%ED%81%AC%3A%20https%3A//forms.gle/HXNHUmimfYRd6z8f6&location=%EC%97%98%ED%83%80%EC%9B%8C%205F%20%EC%98%A4%EB%A5%B4%EC%B2%B4%ED%99%80%2C%20%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C%20213&trp=false" target="_blank" rel="noopener">일정 추가하기</a>
+          <a class="cta-alt" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=VTK%20Seminar%202025%20%7C%20Cadence/OrCAD%20Seminar&dates=20251017T003000Z/20251017T082000Z&details=%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%A7%81%ED%81%AC%3A%20https%3A//forms.gle/HXNHUmimfYRd6z8f6&location=%EC%97%98%ED%83%80%EC%9B%8C%205F%20%EC%98%A4%EB%A5%B4%EC%B2%B4%ED%99%80%2C%20%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C%20213&trp=false" target="_blank" rel="noopener">일정 추가하기</a>
         </div>
       </div>
     </div>
@@ -107,6 +112,8 @@
           <tr><td>16:00–16:30</td><td>"OrCAD X Capture CIS을 활용한 Library DB 구축 및 실무 사례"</td><td>이민우</td><td>Kaon Group</td></tr>
           <tr><td>16:30–17:00</td><td>"Cadence Sigrity를 활용한 SI/PI 검증 실무 사례"</td><td>이윤호</td><td>Megasol</td></tr>
           <tr><td>17:00–17:20</td><td>"자동차 전장 부품의 글로벌 OE 규격 대응을 위한 PSpice 시뮬레이션 기반 검증 방법"</td><td>신동은</td><td>Hyundai Mobis</td></tr>
+          <!-- 추가: 기념품 증정 -->
+          <tr><td>17:20–17:40</td><td>기념품 증정</td><td></td><td></td></tr>
         </tbody>
       </table>
       <p class="muted" style="margin:10px 0 0;">※ 상기 일정은 당일 사정에 따라 변경될 수 있습니다.</p>
@@ -128,7 +135,7 @@
       </ul>
       <div style="margin-top:14px;">
         <a class="cta" href="https://forms.gle/HXNHUmimfYRd6z8f6" target="_blank" rel="noopener">사전 등록하기</a>
-        <a class="cta-outline" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=VTK%20Seminar%202025%20%7C%20Cadence/OrCAD%20Seminar&dates=20251017T003000Z/20251017T082000Z&details=%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%A7%81%ED%81%AC%3A%20https%3A//forms.gle/HXNHUmimfYRd6z8f6&location=%EC%97%98%ED%83%80%EC%9B%8C%205F%20%EC%98%A4%EB%A5%B4%EC%B2%B4%ED%99%80%2C%20%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C%20213&trp=false" target="_blank" rel="noopener">일정 추가하기</a>
+        <a class="cta-alt" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=VTK%20Seminar%202025%20%7C%20Cadence/OrCAD%20Seminar&dates=20251017T003000Z/20251017T082000Z&details=%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%A7%81%ED%81%AC%3A%20https%3A//forms.gle/HXNHUmimfYRd6z8f6&location=%EC%97%98%ED%83%80%EC%9B%8C%205F%20%EC%98%A4%EB%A5%B4%EC%B2%B4%ED%99%80%2C%20%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C%20213&trp=false" target="_blank" rel="noopener">일정 추가하기</a>
       </div>
     </div>
   </div>
@@ -139,14 +146,14 @@
   <div class="wrap container">
     <div class="card">
       <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
-        <span class="badge">NEW</span>
+        <span class="badge-new">NEW</span>
         <h2 style="margin:0;">VTK YouTube 채널 <span style="font-weight:700;">신규 오픈!</span></h2>
       </div>
       <p class="muted" style="margin:4px 0 12px;">인기 동영상 플레이리스트를 미리 보고, 채널에서 더 많은 영상을 만나보세요.</p>
       <div class="yt-wrap"><div id="yt-player"></div></div>
       <div style="margin-top:12px;">
         <a class="cta" href="https://www.youtube.com/@VerityTechnologyKorea" target="_blank" rel="noopener">채널 바로가기</a>
-        <a class="cta-outline" href="https://www.youtube.com/@VerityTechnologyKorea?sub_confirmation=1" target="_blank" rel="noopener">구독하기</a>
+        <a class="cta-danger" href="https://www.youtube.com/@VerityTechnologyKorea?sub_confirmation=1" target="_blank" rel="noopener">구독하기</a>
       </div>
       <p class="muted" style="margin:8px 0 0;">※ 자동재생은 브라우저 정책상 무음으로 재생됩니다. 소리는 플레이어에서 해제하세요.</p>
     </div>
@@ -163,13 +170,13 @@
   </div>
 </footer>
 
-<!-- YouTube IFrame API & Fallback (오류 폴백 포함) -->
+<!-- YouTube IFrame API & Fallback -->
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
   // 재생목록 ID
   const YT_PLAYLIST_ID = 'PLTI2oXa5igeqRYXxBWLwWeg9BSbTEf9J7';
 
-  // API 실패/차단 시 사용할 폴백 iframe 삽입 + 메시지
+  // API 실패/차단 시 폴백 iframe 삽입 + 메시지
   function mountFallback(reasonText) {
     const host = document.getElementById('yt-player');
     if (!host) return;
@@ -183,10 +190,8 @@
       reasonText + '</div>' : '');
   }
 
-  // 플레이어 참조
   var player = null;
 
-  // API 준비 콜백
   function onYouTubeIframeAPIReady() {
     try {
       player = new YT.Player('yt-player', {
@@ -200,14 +205,14 @@
           modestbranding: 1,
           playsinline: 1,
           loop: 1
-          // GitHub Pages 배포 시엔 origin 지정 가능. 로컬 file:// 테스트 시 문제되면 주석 유지.
+          // GitHub Pages 배포 시 origin 지정 가능. 로컬 file:// 테스트 시 주석 유지.
           // ,origin: window.location.origin
         },
         events: {
           onReady: function (e) {
             try {
               var lv = e.target.getAvailableQualityLevels();
-              if (lv && lv.length) e.target.setPlaybackQuality(lv[0]); // 최고 화질 시도
+              if (lv && lv.length) e.target.setPlaybackQuality(lv[0]);
             } catch (_) {}
             e.target.playVideo();
           },
