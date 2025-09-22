@@ -212,7 +212,7 @@
 <!-- Sticky survey bar -->
 <div id="survey-sticky" class="survey-sticky" role="region" aria-label="설문 참여 알림">
   <div class="bar">
-    <div>세미나가 곧 종료됩니다. <b>설문에 참여</b>하고 기념품을 받아가세요!</div>
+    <div>세미나 종료 후, <b>설문에 참여</b>하고 기념품을 받아가세요!</div>
     <div>
       <a id="survey-link-sticky" class="btn cta" href="https://forms.gle/XZhocpthq1KvBM2D7" target="_blank" rel="noopener">설문 참여하기</a>
       <button class="close" onclick="document.getElementById('survey-sticky').style.display='none'">×</button>
@@ -265,7 +265,7 @@
 
   // ===== Survey schedule =====
   const SURVEY_URL='https://forms.gle/XZhocpthq1KvBM2D7';
-  const SHOW_FROM=new Date('2025-09-17T15:00:00+09:00').getTime(); // KST
+  const SHOW_FROM=new Date('2025-10-17T08:00:00+09:00').getTime(); // KST
   const HIDE_AFTER=new Date('2025-11-30T23:59:59+09:00').getTime();
 
   function toggleSurveyVisibility(){
@@ -285,4 +285,5 @@
 </script>
 </body>
 </html>
+
 
