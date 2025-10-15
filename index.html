@@ -31,9 +31,9 @@
   .btn:active{transform:translateY(1px)}
   .cta{background:var(--brand-2);color:#fff;padding:14px 20px}
   .cta:hover{background:#1f2d75}
-  .cta-outline{background:transparent;border:2px solid #0ea5e9;color:#0ea5e9;padding:12px 16px;margin-left:10px}
+  .cta-outline{background:transparent;border:2px solid #0ea5e9;color:#0ea5e9;padding:12px 16px}
   .cta-outline:hover{background:rgba(14,165,233,.08);border-color:#0284c7;color:#0284c7}
-  .cta-danger-ghost{background:transparent;border:2px solid #ef4444;color:#ef4444;padding:12px 16px;border-radius:10px;margin-left:10px}
+  .cta-danger-ghost{background:transparent;border:2px solid #ef4444;color:#ef4444;padding:12px 16px;border-radius:10px}
   .cta-danger-ghost:hover{background:rgba(239,68,68,.08);border-color:#dc2626;color:#dc2626}
 
   h1{margin:6px 0 10px;font-size:40px;line-height:1.15}
@@ -73,32 +73,43 @@
   <div class="wrap">
     <div class="grid">
       <div>
-        <span class="badge">Registration Open</span>
+        <span id="hero-badge" class="badge">Registration Open</span>
         <h1>VTK Seminar 2025<br>Cadence/OrCAD Seminar</h1>
         <p class="lead">2025년 10월 17일 (금) · 서울 서초구 엘타워 5F 오르체홀</p>
-        <div>
+
+        <!-- [사전] 버튼들 -->
+        <div data-phase="pre">
           <a class="btn cta" href="https://forms.gle/HXNHUmimfYRd6z8f6" target="_blank" rel="noopener">사전 등록하기</a>
-          <!-- 일정 추가하기: OUTLINE / 17:30 종료 -->
-          <a class="btn cta-outline" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=VTK%20Seminar%202025%20%7C%20Cadence%2FOrCAD%20Seminar&dates=20251017T003000Z/20251017T083000Z&details=%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%A7%81%ED%81%AC%3A%20https%3A%2F%2Fforms.gle%2FHXNHUmimfYRd6z8f6&location=%EC%97%98%ED%83%80%EC%9B%8C%205F%20%EC%98%A4%EB%A5%B4%EC%B2%B4%ED%99%80%2C%20%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C%20213&trp=false"
-             target="_blank" rel="noopener">일정 추가하기</a>
+          <a class="btn cta-outline" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=VTK%20Seminar%202025%20%7C%20Cadence%2FOrCAD%20Seminar&dates=20251017T003000Z/20251017T083000Z&details=%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%A7%81%ED%81%AC%3A%20https%3A%2F%2Fforms.gle%2FHXNHUmimfYRd6z8f6&location=%EC%97%98%ED%83%80%EC%9B%8C%205F%20%EC%98%A4%EB%A5%B4%EC%B2%B4%ED%99%80%2C%20%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C%20213&trp=false" target="_blank" rel="noopener">일정 추가하기</a>
         </div>
+        <!-- [당일] 버튼 없음 -->
       </div>
     </div>
   </div>
 </header>
 
-<!-- INFO CARDS -->
+<!-- INFO CARDS (공통) -->
 <section class="section">
   <div class="wrap container">
     <div class="grid-3">
       <div class="card"><h3 style="margin:0 0 8px;">일시</h3><p style="margin:0;">2025.10.17(금) 09:30–17:30</p></div>
       <div class="card"><h3 style="margin:0 0 8px;">장소</h3><p style="margin:0;">엘타워 5층 오르체홀<br><span class="muted">서울특별시 서초구 강남대로 213</span></p></div>
-      <div class="card"><h3 style="margin:0 0 8px;">등록</h3><p style="margin:0 0 8px;">무료 · 선착순 / 확정 메일 안내</p><a class="btn cta" href="https://forms.gle/HXNHUmimfYRd6z8f6" target="_blank" rel="noopener">사전 등록하기</a></div>
+      <!-- [사전] 등록 카드 -->
+      <div class="card" data-phase="pre">
+        <h3 style="margin:0 0 8px;">등록</h3>
+        <p style="margin:0 0 8px;">무료 · 선착순 / 확정 메일 안내</p>
+        <a class="btn cta" href="https://forms.gle/HXNHUmimfYRd6z8f6" target="_blank" rel="noopener">사전 등록하기</a>
+      </div>
+      <!-- [당일] 현장 인증 카드 -->
+      <div class="card" data-phase="live" style="display:none;">
+        <h3 style="margin:0 0 8px;">현장 인증 & 기념품</h3>
+        <p style="margin:0;">설문 제출 + 유튜브 구독 인증 후 <b>17:10–17:30</b> 데스크에서 수령</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- INTRO -->
+<!-- INTRO (공통) -->
 <section class="section">
   <div class="wrap container">
     <div class="card">
@@ -106,8 +117,8 @@
       <p style="margin:0 0 6px; line-height:1.9;">
         <b>Allegro X Pulse</b> 기반 System Capture로 <b>라이브러리/엔지니어링 데이터 관리</b>와
         <b>PSpice DMI</b> 회로 시뮬레이션으로 시작합니다. 이어서 <b>AWR 25.1</b> 신규 기능과
-        <b>2025 로드맵</b>을 소개하고, <b>OrCAD X Presto</b>와 <b>PCB Professional</b> 비교 데모(I·II) 및
-        <b>Allegro X IDA</b>·<b>Sigrity ERC(Imp, Cpl)</b>·<b>IR-Drop</b> 검증 데모(I·II)를 진행합니다.
+        <b>2025 로드맵</b>을 소개하고, <b>OrCAD X Presto</b>와 <b>PCB Professional</b> 비교 Demo(I·II) 및
+        <b>Allegro X IDA</b>·<b>Sigrity ERC(Imp, Cpl)</b>·<b>IR-Drop</b> 검증 Demo(I·II)를 진행합니다.
         실무 세션에서는 Kaon Group의 <b>Capture CIS 라이브러리 DB 구축</b> 사례와 Megasol의
         <b>Sigrity 기반 SI/PI 검증</b> 사례를 공유하며, Hyundai Mobis는 <b>PSpice</b> 시뮬레이션을 활용한
         글로벌 <b>OE 규격 대응</b> 검증 방법을 발표합니다.
@@ -116,7 +127,7 @@
   </div>
 </section>
 
-<!-- AGENDA (UPDATED) -->
+<!-- AGENDA (공통) -->
 <section class="section">
   <div class="wrap container">
     <div class="card">
@@ -146,8 +157,8 @@
   </div>
 </section>
 
-<!-- REGISTRATION GUIDE -->
-<section class="section">
+<!-- [사전] 등록 안내 -->
+<section class="section" data-phase="pre">
   <div class="wrap container">
     <div class="card">
       <h2 style="margin:0 0 10px;">등록 안내</h2>
@@ -160,26 +171,49 @@
       </ul>
       <div style="margin-top:14px;">
         <a class="btn cta" href="https://forms.gle/HXNHUmimfYRd6z8f6" target="_blank" rel="noopener">사전 등록하기</a>
-        <a class="btn cta-outline" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=VTK%20Seminar%202025%20%7C%20Cadence%2FOrCAD%20Seminar&dates=20251017T003000Z/20251017T083000Z&details=%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%A7%81%ED%81%AC%3A%20https%3A%2F%2Fforms.gle%2FHXNHUmimfYRd6z8f6&location=%EC%97%98%ED%83%80%EC%9B%8C%205F%20%EC%98%A4%EB%A5%B4%EC%B2%B4%ED%99%80%2C%20%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C%20213&trp=false"
-           target="_blank" rel="noopener">일정 추가하기</a>
+        <a class="btn cta-outline" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=VTK%20Seminar%202025%20%7C%20Cadence%2FOrCAD%20Seminar&dates=20251017T003000Z/20251017T083000Z&details=%EC%82%AC%EC%A0%84%20%EB%93%B1%EB%A1%9D%20%EB%A7%81%ED%81%AC%3A%20https%3A%2F%2Fforms.gle%2FHXNHUmimfYRd6z8f6&location=%EC%97%98%ED%83%80%EC%9B%8C%205F%20%EC%98%A4%EB%A5%B4%EC%B2%B4%ED%99%80%2C%20%EC%84%9C%EC%9A%B8%20%EC%84%9C%EC%B4%88%EA%B5%AC%20%EA%B0%95%EB%82%A8%EB%8C%80%EB%A1%9C%20213&trp=false" target="_blank" rel="noopener">일정 추가하기</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SURVEY (auto show near end) -->
-<section id="survey-section" class="section" style="display:none;">
+<!-- [당일] 현장 안내 -->
+<section class="section" data-phase="live" style="display:none;">
+  <div class="wrap container">
+    <div class="card">
+      <h2 style="margin:0 0 10px;">현장 안내</h2>
+      <ul style="margin:0;padding-left:18px;line-height:1.9;">
+        <li><b>설문 & 유튜브 구독 인증 → 사은품 수령</b><br>세미나 종료 후 명찰의 QR 또는 아래 설문 링크로 접속하여 <b>설문 제출</b> 및 <b>채널 구독</b>을 인증해 주세요.<br> <b>17:10–17:30</b> 데스크에서 기념품을 수령합니다.</li>
+        <li>발표 자료는 <b>현장 스태프 또는 담당자에게 직접 요청</b>해 주세요. (발표자 허용 범위 내 제공)</li>
+        <li>문의: 02-2057-8815 · <a href="mailto:hjmoon@veritytech.co.kr">hjmoon@veritytech.co.kr</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- [당일] 설문: 16:00 오픈 전 티저 -->
+<section id="survey-teaser" class="section" data-phase="live" style="display:none;">
+  <div class="wrap container">
+    <div class="card">
+      <h2 style="margin:0 0 8px;">행사 설문 (16:00 오픈)</h2>
+      <p class="muted" style="margin:0;">설문은 오늘 <b>16:00</b>에 열립니다. 오픈되면 본 안내가 자동으로 설문 링크로 전환됩니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- [당일] 설문 섹션 -->
+<section id="survey-section" class="section" data-phase="live" style="display:none;">
   <div class="wrap container">
     <div class="card">
       <h2 style="margin:0 0 8px;">행사 설문</h2>
-      <p class="muted" style="margin:0 0 12px;">세미나에 참석해주셔서 감사합니다. 소중한 의견을 남겨 주세요. 설문 완료 시 현장 기념품 제공이 진행됩니다.</p>
+      <p class="muted" style="margin:0 0 12px;">세미나에 참석해주셔서 감사합니다. 설문 제출 및 유튜브 구독 인증 후 현장 데스크에서 기념품을 받아가세요.</p>
       <a id="survey-link" class="btn cta" href="https://forms.gle/XZhocpthq1KvBM2D7" target="_blank" rel="noopener" aria-label="설문 참여하기">설문 참여하기</a>
       <a class="btn cta-danger-ghost" href="https://www.youtube.com/@VerityTechnologyKorea?sub_confirmation=1" target="_blank" rel="noopener">구독하기</a>
     </div>
   </div>
 </section>
 
-<!-- YOUTUBE -->
+<!-- YOUTUBE (공통) -->
 <section class="section">
   <div class="wrap container">
     <div class="card">
@@ -198,7 +232,7 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER (공통) -->
 <footer class="footer">
   <div class="wrap">
     <div class="inner">
@@ -208,8 +242,8 @@
   </div>
 </footer>
 
-<!-- Sticky survey bar -->
-<div id="survey-sticky" class="survey-sticky" role="region" aria-label="설문 참여 알림">
+<!-- Sticky survey bar (당일+설문 오픈 시 표시) -->
+<div id="survey-sticky" class="survey-sticky" role="region" aria-label="설문 참여 알림" data-phase="live" style="display:none;">
   <div class="bar">
     <div>세미나 종료 후, <b>설문에 참여</b>하고 기념품을 받아가세요!</div>
     <div>
@@ -222,7 +256,7 @@
 <!-- YouTube IFrame API & fallback -->
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
-  // ===== YouTube =====
+  /* ===== YouTube ===== */
   const YT_PLAYLIST_ID = 'PLTI2oXa5igeqRYXxBWLwWeg9BSbTEf9J7';
 
   function mountFallback(reasonText){
@@ -262,25 +296,46 @@
     }
   }
 
-  // ===== Survey schedule =====
-  const SURVEY_URL='https://forms.gle/XZhocpthq1KvBM2D7';
-  const SHOW_FROM=new Date('2025-10-17T08:00:00+09:00').getTime(); // 필요 시 종료 근처로 조정
-  const HIDE_AFTER=new Date('2025-11-30T23:59:59+09:00').getTime();
+  /* ===== Phase/Schedule Switch ===== */
+  // 세미나 시작/설문 오픈 시간 (KST)
+  const EVENT_START = new Date('2025-10-15T19:00:00+09:00').getTime();  // Live 전환
+  const SURVEY_OPEN = new Date('2025-10-17T16:00:00+09:00').getTime();   // 설문 오픈
+  const SURVEY_CLOSE= new Date('2025-11-17T23:59:59+09:00').getTime();
 
-  function toggleSurveyVisibility(){
-    var now=Date.now();
-    var show=(now>=SHOW_FROM && now<=HIDE_AFTER);
-    var sec=document.getElementById('survey-section');
-    var bar=document.getElementById('survey-sticky');
-    var a1=document.getElementById('survey-link');
-    var a2=document.getElementById('survey-link-sticky');
+  const SURVEY_URL='https://forms.gle/XZhocpthq1KvBM2D7';
+
+  function applyPhase() {
+    const now = Date.now();
+    const live = now >= EVENT_START;
+
+    // 사전/당일 섹션 토글
+    document.querySelectorAll('[data-phase="pre"]').forEach(el => el.style.display = live ? 'none' : '');
+    document.querySelectorAll('[data-phase="live"]').forEach(el => el.style.display = live ? '' : 'none');
+
+    // HERO 뱃지
+    const badge = document.getElementById('hero-badge');
+    if (badge) badge.textContent = live ? 'Live Today' : 'Registration Open';
+
+    // 설문 섹션/티저/스티키바
+    const teaser = document.getElementById('survey-teaser');
+    const survey = document.getElementById('survey-section');
+    const sticky = document.getElementById('survey-sticky');
+    const surveyOn = now >= SURVEY_OPEN && now <= SURVEY_CLOSE;
+
+    if (teaser) teaser.style.display = (live && !surveyOn) ? 'block' : 'none';
+    if (survey) survey.style.display = (live && surveyOn) ? 'block' : 'none';
+    if (sticky) sticky.style.display = (live && surveyOn) ? 'block' : 'none';
+
+    // 설문 링크 보장
+    const a1=document.getElementById('survey-link');
+    const a2=document.getElementById('survey-link-sticky');
     if(a1) a1.href=SURVEY_URL;
     if(a2) a2.href=SURVEY_URL;
-    if(sec) sec.style.display=show?'block':'none';
-    if(bar) bar.style.display=show?'block':'none';
   }
-  toggleSurveyVisibility();
-  setInterval(toggleSurveyVisibility, 60*1000);
+
+  // 최초 적용 + 분 단위 재확인
+  applyPhase();
+  setInterval(applyPhase, 60 * 1000);
 </script>
 </body>
 </html>
